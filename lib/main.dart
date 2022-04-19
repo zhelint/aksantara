@@ -103,7 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ElevatedButton(
                 onPressed: () {},
                 child: Text("Lebih lanjut"),
-                //style: ButtonStyle(backgroundColor: ColorProperty(Colors.amber, value)),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.amber)),
               ),
             )
           ],
