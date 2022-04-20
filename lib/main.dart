@@ -36,11 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
     Aksara(
         name: 'Aksara Jawa',
         desc: 'Jawa',
-        image: 'assets/images/Screenshot 2022-04-19 061103.png'),
+        image: 'assets/images/aksaraSunda.png'),
     Aksara(
         name: 'Aksara Sunda',
         desc: 'Sunda',
-        image: 'assets/images/Screenshot 2022-04-19 061103.png'),
+        image: 'assets/images/aksaraSunda.png'),
   ];
 
   Color componentColor = Color.fromARGB(255, 255, 183, 116);
@@ -100,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Image.asset(
                                 '${i.image}',
                                 height: 140.0,
+                                width: double.infinity,
                               ),
                             ),
                             //Spacer(),
@@ -146,7 +147,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 60,
                   margin: EdgeInsets.all(16.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPage()));
+                    },
                     child: Text(
                       "Lebih lanjut",
                       style: TextStyle(
@@ -164,5 +170,23 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: const BoxDecoration(),
           ),
         ));
+  }
+}
+
+class DetailPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Column(
+      children: [
+        Text("You are in a detail page!"),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.arrow_back_ios)),
+      ],
+    )));
   }
 }
