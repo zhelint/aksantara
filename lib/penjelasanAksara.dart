@@ -1,0 +1,2 @@
+String deskripsiAksara =
+    'Aksara Nusantara merupakan ragam aksara atau tulisan tradisional yang digunakan di wilayah Nusantara. Istilah ini umumnya digunakan untuk merujuk pada aksara-aksara abugida turunan Brahmi yang digunakan oleh masyarakat Indonesia pra-kemerdekaan. Sebagian besar aksara Nusantara masih diajarkan sebagai bagian dari muatan lokal di daerah masing-masing, tetapi dengan penerapan yang terbatas dalam kehidupan sehari-hari.';

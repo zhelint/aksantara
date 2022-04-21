@@ -2,16 +2,16 @@ import 'package:flutter/widgets.dart';
 
 class Aksara {
   String? name;
-  String? desc;
+  String? briefDesc;
   String? image;
 
   Aksara({
     @required this.name,
-    @required this.desc,
+    @required this.briefDesc,
     @required this.image,
   });
 
   // String get aksaraName => name!;
-  // String get aksaraDesc => desc!;
+  // String get aksarabriefDesc => briefDesc!;
   // String get aksaraImage => image!;
 }

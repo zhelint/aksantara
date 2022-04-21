@@ -1,11 +1,12 @@
 // import 'dart:html';
 // import 'dart:ui';
 
-import 'package:aksantara/aksara.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'aksara.dart';
-import 'aksaraWidget.dart';
+import 'aksaraResources.dart';
+import 'penjelasanAksara.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,8 +20,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Inter'),
+      theme: ThemeData(primarySwatch: Colors.orange, fontFamily: 'Inter'),
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -31,18 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //Add an "Aksara" objects, that will be used in Carousel
-  List<Aksara> aksara = [
-    Aksara(
-        name: 'Aksara Jawa',
-        desc: 'Jawa',
-        image: 'assets/images/aksaraSunda.png'),
-    Aksara(
-        name: 'Aksara Sunda',
-        desc: 'Sunda',
-        image: 'assets/images/aksaraSunda.png'),
-  ];
-
   Color componentColor = Color.fromARGB(255, 255, 183, 116);
   Color fontColor = Color.fromARGB(255, 61, 61, 61);
 
@@ -85,8 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     viewportFraction: 0.70,
                   ),
                   items: aksara.map((i) {
-                    // return Builder(
-                    //   builder: (BuildContext context) {
                     return Container(
                         width: /*  240, */ MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 10),
@@ -121,12 +109,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             Expanded(
                               flex: 1,
                               child: Text(
-                                '${i.desc}',
+                                '${i.briefDesc}',
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 102, 102, 102),
                                     fontFamily: 'Inter',
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16),
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ],
@@ -154,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               builder: (context) => DetailPage()));
                     },
                     child: Text(
-                      "Lebih lanjut",
+                      "Apa itu aksara nusantara?",
                       style: TextStyle(
                           fontFamily: 'InterBold',
                           fontSize: 20,
@@ -177,16 +167,51 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+        backgroundColor: const Color(0xFFFFE8C7),
+        body: SafeArea(
+            child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 16, 16, 16),
             child: Column(
-      children: [
-        Text("You are in a detail page!"),
-        ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back_ios)),
-      ],
-    )));
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back),
+                      padding: EdgeInsets.only(left: 0),
+                    ),
+                    Text("Aksara Nusantara",
+                        style: TextStyle(
+                            fontFamily: 'InterSemiBold', fontSize: 20))
+                  ],
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      color: Color.fromARGB(255, 255, 183, 116),
+                      child: Image.asset(
+                        'assets/images/aksara-aksara.png',
+                        width: 300,
+                      ),
+                    )),
+                Container(
+                  padding: EdgeInsets.only(left: 16, top: 16),
+                  child: Text(
+                    deskripsiAksara,
+                    style: TextStyle(
+                      fontSize: 16,
+                      height: 1.5,
+                      color: Color.fromARGB(255, 61, 61, 61),
+                    ),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )));
   }
 }
