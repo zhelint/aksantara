@@ -1,6 +1,3 @@
-// import 'dart:html';
-// import 'dart:ui';
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -13,8 +10,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  //const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -41,13 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         //Set the background color of Scaffold (the overall screen)
         backgroundColor: const Color(0xFFFFE8C7),
-
-        //Put all of the elements inside the container, so that I can
-        //use "decoration" property
         body: SafeArea(
           child: Container(
-            //padding: EdgeInsets.only(top: ),
-            //Organize the contents in column
             child: Column(
               children: [
                 Align(
@@ -64,10 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-
-                //const Spacer(),
-
-                //   //Add CarouselSlider
                 CarouselSlider(
                   options: CarouselOptions(
                     height: 270.0,
@@ -76,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   items: aksara.map((i) {
                     return Container(
-                        width: /*  240, */ MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                             color: componentColor,
@@ -91,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: double.infinity,
                               ),
                             ),
-                            //Spacer(),
                             Expanded(
                               flex: 1,
                               child: Text(
@@ -121,17 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ],
                         ));
-                    //},
-                    //);
                   }).toList(),
                 ),
-
-                //Add spacer between the button and the slider
-                //const Spacer(),
                 const Spacer(
                   flex: 2,
                 ),
-
                 Container(
                   width: double.infinity,
                   height: 60,
